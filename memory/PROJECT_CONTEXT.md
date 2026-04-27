@@ -6,63 +6,70 @@
 ---
 
 ## Project Identity
-- **Project Name:** akshara-tools
-- **Client / Product:** [CLIENT_NAME or "Akshara Internal"]
-- **Type:** [ ] Client Project  [ ] SaaS Product  [ ] Internal Tool
+- **Project Name:** Akshara Tools Suite
+- **Client / Product:** Akshara Internal
+- **Type:** [ ] Client Project  [x] SaaS Product  [x] Internal Tool
 - **Start Date:** 2026-04-26
-- **Target Delivery:** 2026-04-26
-- **Priority:** [ ] Critical  [ ] High  [ ] Normal
+- **Target Delivery:** 2026-05-05
+- **Priority:** [x] Critical  [ ] High  [ ] Normal
 
 ---
 
 ## Project Summary (≤ 10 lines)
-[CEO Agent writes a concise summary of what this project is and what it must achieve]
+Build a fast, SEO-ready tools platform at tools.aksharatech.com for five calculators: Salary, GST, SIP, EMI, and TDEE.
+Primary monetization is AdSense with strong technical SEO and static SPA deployment on Cloudflare Pages.
+All business constants must be config-driven; no hardcoded tax/business values inside components.
+Admin panel at `/admin` must manage reviews and moderation end-to-end.
+Auth flow is email OTP + 4-digit PIN, with public read and authenticated write for reviews.
 
 ---
 
 ## Active Departments
-- [ ] Technical (CTO Agent)
-- [ ] Product & Design (CPO Agent)
+- [x] Technical (CTO Agent)
+- [x] Product & Design (CPO Agent)
 - [ ] Sales (Sales Director)
-- [ ] Marketing (Marketing Director)
+- [x] Marketing (Marketing Director)
 - [ ] Legal (Legal Agent)
 - [ ] Data & Analytics (Data Analyst)
 
 ---
 
 ## Tech Stack for This Project
-- **Frontend:** [React / SPFx / Flutter / HTML-CSS-JS / other]
-- **Backend:** [Laravel / ASP.NET / Azure Functions / other]
-- **Database:** [SQL Server / MySQL / PostgreSQL / other]
-- **Cloud:** [Azure / other]
-- **Search:** [Elasticsearch / Meilisearch / DB full-text / other]
-- **Cache:** [Redis / in-memory / none]
-- **Auth:** [Azure AD / JWT / OAuth / other]
+- **Frontend:** React 18 + Vite + React Router
+- **Backend:** Cloudflare Workers API (serverless)
+- **Database:** Turso (libsql / SQLite)
+- **Cloud:** Cloudflare Pages + Cloudflare Workers
+- **Search:** DB query + indexed filtering
+- **Cache:** none (phase 1), optional edge cache later
+- **Auth:** Custom OTP + PIN
 
 ---
 
 ## End Users Profile
-- **Who uses this:** [e.g., "Retail store managers, 35-55 age, mobile users, low tech-savvy"]
-- **Primary devices:** [ ] Desktop  [ ] Mobile  [ ] Tablet  [ ] All
-- **Technical level:** [ ] Non-technical  [ ] Semi-technical  [ ] Technical
-- **Industry:** [Industry name]
-- **Special needs:** [e.g., "Multilingual", "Works offline", "Low bandwidth areas"]
+- **Who uses this:** Indian users doing daily finance and health calculations
+- **Primary devices:** [ ] Desktop  [ ] Mobile  [ ] Tablet  [x] All
+- **Technical level:** [x] Non-technical  [ ] Semi-technical  [ ] Technical
+- **Industry:** Consumer finance + health
+- **Special needs:** Mobile-first, low friction, no signup for tool usage
 
 ---
 
 ## Key Modules / Features
-1. [Module 1 name] — [one line description]
-2. [Module 2 name] — [one line description]
-3. [Module 3 name] — [one line description]
-[add more as needed]
+1. Salary Calculator — CTC to in-hand, old/new tax regime compare
+2. GST Calculator — inclusive/exclusive + invoice generation
+3. SIP Calculator — step-up and inflation-adjusted projection
+4. EMI Calculator — reducing balance and comparison mode
+5. TDEE Calculator — calories, macros, BMI, hydration
+6. Reviews + Admin Panel — moderation, pin/hide/reply/export
+7. Auth system — OTP signup and 4-digit PIN login
 
 ---
 
 ## Performance Requirements
-- Expected concurrent users: [NUMBER]
-- Expected data volume: [e.g., "500K records year 1, 2M by year 3"]
-- Search dataset size: [e.g., "10 lakh employee records"]
-- Special performance needs: [e.g., "Dashboard must load < 3s on 4G mobile"]
+- Expected concurrent users: 500+
+- Expected data volume: 100K+ reviews year 1
+- Search dataset size: review tables per tool
+- Special performance needs: sub-100ms local calculations and Lighthouse >=95 mobile
 
 ---
 
@@ -73,17 +80,21 @@
 ---
 
 ## Critical Business Rules
-[CEO Agent extracts top 5-10 non-negotiable business rules from requirement doc]
-1.
-2.
-3.
+1. Entire tool use path should fit viewport as much as possible across target devices.
+2. No hardcoded tax/business constants inside tool components.
+3. Salary tax constants are managed only in `src/config/taxConfig.js`.
+4. Tool usage is public; login required only for posting reviews.
+5. Admin panel must be protected and support moderation actions.
+6. All output monetary values shown rounded.
+7. Mobile numeric keyboard must be used for numeric inputs.
+8. No production deployment without manual review.
 
 ---
 
 ## Requirement Document Location
-- **File:** briefs/[requirement-doc-filename].md
-- **Status:** [ ] Parsed by CEO Agent  [ ] Task files generated  [ ] Ready for development
-- **Note:** Do NOT re-read the full document. Read task files in memory/tasks/ instead.
+- **File:** briefs/PRD.md
+- **Status:** [x] Parsed by CEO Agent  [x] Task files generated  [x] Ready for development
+- **Note:** Development should run by phased task files and status tracking.
 
 ---
 

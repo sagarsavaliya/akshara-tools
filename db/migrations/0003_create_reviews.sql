@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS reviews (
+  id TEXT PRIMARY KEY,
+  tool_id TEXT NOT NULL,
+  user_id TEXT,
+  user_name TEXT NOT NULL,
+  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  title TEXT,
+  body TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'pending',
+  is_pinned INTEGER NOT NULL DEFAULT 0,
+  pinned_at TEXT,
+  hidden_at TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
+);
